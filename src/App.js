@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import FAB from "./components/FAB";
+import Header from "./components/Header";
+import NoteCard from "./components/NoteCard";
 
-function App() {
+const DUMMY_NOTES = [
+  {id: 'n1', title: 'Note 1', body: '', category: 'category', data: '12-12-2020'},
+  {id: 'n2', title: 'Note 2', body: '', category: 'category', data: '12-12-2020'},
+  {id: 'n3', title: 'Note 3', body: '', category: 'category', data: '12-12-2020'},
+  {id: 'n4', title: 'Note 4', body: '', category: 'category', data: '12-12-2020'},
+]
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+      <main style={{height: '100vh'}}>
+        <section className="container">
+          <ul className="padding__lg grid__one grid__just-null">
+            {
+              DUMMY_NOTES.map(nt => <NoteCard {...{...nt}}/>)
+            }
+          </ul>
+        </section>
+      </main>
+      <FAB />
+    </>
   );
 }
 
